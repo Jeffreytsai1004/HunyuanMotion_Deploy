@@ -9,6 +9,9 @@
 @CALL pip install --force-reinstall torch==2.5.1+cu118 torchvision==0.20.1+cu118 torchaudio==2.5.1+cu118 torchdiffeq --index-url https://download.pytorch.org/whl/cu118 --no-cache-dir
 @CALL git clone https://github.com/Tencent-Hunyuan/HY-Motion-1.0.git
 @CALL cd HY-Motion-1.0/
+@CALL mkdir cache\gdown
+@CALL mkdir cache\torch
+@CALL mkdir cache\huggingface
 @CALL git lfs pull
 @CALL pip install -r requirements.txt
 @REM Example for Standard version
