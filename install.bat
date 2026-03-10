@@ -5,8 +5,8 @@
 @CALL set TORCH_HOME=cache\torch
 @CALL set HF_HOME=cache\huggingface
 @CALL set PYTHONDONTWRITEBYTECODE=1
-@CALL set CUDA_HOME=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8
-@CALL pip install --force-reinstall torch==2.5.1+cu118 torchvision==0.20.1+cu118 torchaudio==2.5.1+cu118 torchdiffeq --index-url https://download.pytorch.org/whl/cu118 --no-cache-dir
+@CALL set CUDA_HOME=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.1
+@CALL pip install --force-reinstall torch==2.5.1+cu121 torchvision==0.20.1+cu121 torchaudio==2.5.1+cu121 torchdiffeq --index-url https://download.pytorch.org/whl/cu121 --no-cache-dir
 @CALL git clone https://github.com/Tencent-Hunyuan/HY-Motion-1.0.git
 @CALL cd HY-Motion-1.0/
 @CALL mkdir cache\gdown
