@@ -1,5 +1,5 @@
 @CALL "%~dp0micromamba" create -n HY-Motion-1.0 python==3.10.14 git==2.41.0 git-lfs==3.2.0 -c pytorch -c conda-forge -r "%~dp0\" -y
-@CALL "%~dp0micromamba" shell init --shell cmd.exe --prefix "%~dp0\"
+@CALL "%~dp0micromamba" shell init --shell cmd.exe
 @CALL condabin\micromamba.bat activate HY-Motion-1.0
 @CALL set GDOWN_CACHE=cache\gdown
 @CALL set TORCH_HOME=cache\torch
