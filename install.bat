@@ -39,9 +39,20 @@ echo.
 echo ========================================
 echo Installing PyTorch (CUDA 12.1)...
 echo ========================================
-@CALL pip install --force-reinstall torch==2.5.1+cu121 torchvision==0.20.1+cu121 torchaudio==2.5.1+cu121 torchdiffeq --index-url https://download.pytorch.org/whl/cu121 --no-cache-dir
+@CALL pip install --force-reinstall torch==2.5.1+cu121 torchvision==0.20.1+cu121 torchaudio==2.5.1+cu121 --index-url https://download.pytorch.org/whl/cu121 --no-cache-dir
 if errorlevel 1 (
     echo PyTorch installation failed!
+    pause
+    exit /b 1
+)
+
+echo.
+echo ========================================
+echo Installing other dependencies...
+echo ========================================
+@CALL pip install -r "%~dp0requirements.txt" --no-cache-dir
+if errorlevel 1 (
+    echo Dependency installation failed!
     pause
     exit /b 1
 )
@@ -78,38 +89,6 @@ echo ========================================
 @CALL git lfs pull
 if errorlevel 1 (
     echo Git LFS pull failed, but continuing installation...
-)
-
-echo.
-echo ========================================
-echo Installing Python dependencies (skipping fbxsdkpy)...
-echo ========================================
-@REM Install huggingface_hub first to ensure huggingface-cli is available
-@CALL pip install huggingface_hub==0.30.0
-if errorlevel 1 (
-    echo huggingface_hub installation failed!
-    pause
-    exit /b 1
-)
-
-@REM Install other dependencies, skipping fbxsdkpy (optional dependency)
-@CALL pip install accelerate==0.30.1 diffusers==0.26.3 transformers==4.53.3 einops==0.8.1 safetensors==0.5.3
-@CALL pip install "numpy>=1.24.0,<2.0" "scipy>=1.10.0" transforms3d==0.4.2
-@CALL pip install PyYAML==6.0 omegaconf==2.3.0 click==8.1.3 requests==2.32.4 openai==1.78.1
-@CALL pip install bitsandbytes==0.49.0
-if errorlevel 1 (
-    echo Dependency installation failed!
-    pause
-    exit /b 1
-)
-
-echo.
-echo ========================================
-echo Attempting to install fbxsdkpy (optional)...
-echo ========================================
-@CALL pip install fbxsdkpy==2020.1.post2 --extra-index-url https://gitlab.inria.fr/api/v4/projects/18692/packages/pypi/simple
-if errorlevel 1 (
-    echo fbxsdkpy installation failed, this is optional, continuing...
 )
 
 echo.
