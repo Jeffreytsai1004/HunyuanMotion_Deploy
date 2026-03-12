@@ -50,7 +50,7 @@ echo.
 echo ========================================
 echo Installing other dependencies...
 echo ========================================
-@CALL pip install -r "%~dp0requirements.txt" --no-cache-dir
+@CALL pip install -r requirements.txt
 if errorlevel 1 (
     echo Dependency installation failed!
     pause
