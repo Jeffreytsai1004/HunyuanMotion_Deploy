@@ -30,11 +30,13 @@ if errorlevel 1 (
     pause
     exit /b 1
 )
+
 @CALL set GDOWN_CACHE=cache\gdown
 @CALL set TORCH_HOME=cache\torch
 @CALL set HF_HOME=cache\huggingface
 @CALL set PYTHONDONTWRITEBYTECODE=1
 @CALL set CUDA_HOME=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.1
+
 echo.
 echo ========================================
 echo Installing PyTorch (CUDA 12.1)...
