@@ -8,5 +8,5 @@
 @CALL set CUDA_HOME=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.1
 
 @CALL cd HY-Motion-1.0/
-@CALL python gradio_app.py
+@CALL python gradio_app.py --listen --port 7860 --autolaunch --api --skip-version-check
 @CALL PAUSE
