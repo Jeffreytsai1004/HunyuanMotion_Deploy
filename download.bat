@@ -1,7 +1,7 @@
 @echo off
 
 :: Init and activate environment
-@CALL "%~dp0micromamba" shell init --shell cmd.exe --prefix "%~dp0"
+@CALL "%~dp0micromamba" shell init --shell cmd.exe --root-prefix "%~dp0\"
 call "%~dp0condabin\micromamba.bat" activate HY-Motion-1.0
 
 @CALL set GDOWN_CACHE=cache\gdown
@@ -9,6 +9,22 @@ call "%~dp0condabin\micromamba.bat" activate HY-Motion-1.0
 @CALL set HF_HOME=cache\huggingface
 @CALL set PYTHONDONTWRITEBYTECODE=1
 @CALL set CUDA_HOME=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.1
+
+echo.
+echo ========================================
+echo Cloning HY-Motion-1.0 repository...
+echo ========================================
+if not exist "HY-Motion-1.0" (
+    @CALL git clone https://github.com/Tencent-Hunyuan/HY-Motion-1.0.git
+    if errorlevel 1 (
+        echo Repository cloning failed!
+        pause
+        exit /b 1
+    )
+) else (
+    echo HY-Motion-1.0 directory already exists, skipping clone
+)
+
 
 cd HY-Motion-1.0
 
