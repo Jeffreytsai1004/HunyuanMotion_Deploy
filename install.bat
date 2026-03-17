@@ -50,6 +50,17 @@ if errorlevel 1 (
 
 echo.
 echo ========================================
+echo Installing other torchdiffeq...
+echo ========================================
+@CALL pip install torchdiffeq
+if errorlevel 1 (
+    echo Torchdiffeq installation failed!
+    pause
+    exit /b 1
+)
+
+echo.
+echo ========================================
 echo Installing other dependencies...
 echo ========================================
 @CALL pip install -r requirements.txt
